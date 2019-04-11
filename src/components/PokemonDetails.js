@@ -18,18 +18,22 @@ class PokemonDetails extends React.Component {
     moves: []
   };
   async componentDidMount() {
-    this.setState({ loading: true });
-    const name = this.props.match.params.name;
-    const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
-    const details = res.data;
-    this.setState({
-      loading: false,
-      details,
-      sprites: details.sprites.front_default,
-      abilities: details.abilities,
-      types: details.types,
-      moves: details.moves
-    });
+    try {
+      this.setState({ loading: true });
+      const name = this.props.match.params.name;
+      const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
+      const details = res.data;
+      this.setState({
+        loading: false,
+        details,
+        sprites: details.sprites.front_default,
+        abilities: details.abilities,
+        types: details.types,
+        moves: details.moves
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   render() {

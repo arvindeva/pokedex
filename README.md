@@ -4,6 +4,12 @@ A simple Pokedex App using [Pokedex API](https://pokeapi.co/).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+### Deployed Site
+
+[https://pokedex-jgmbwk2sf.now.sh/](https://pokedex-jgmbwk2sf.now.sh/)
+
+Deployed using now.
+
 ### How to run locally
 
 Make sure you have node installed. You can download it [here](https://nodejs.org/en/download/)

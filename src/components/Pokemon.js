@@ -18,12 +18,16 @@ class Pokemon extends React.Component {
   };
 
   async componentDidMount() {
-    this.setState({ loading: true });
-    const res = await axios.get(this.props.pokemon.url);
-    this.setState({
-      sprites: res.data.sprites.front_default,
-      loading: false
-    });
+    try {
+      this.setState({ loading: true });
+      const res = await axios.get(this.props.pokemon.url);
+      this.setState({
+        sprites: res.data.sprites.front_default,
+        loading: false
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   render() {

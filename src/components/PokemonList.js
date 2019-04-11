@@ -22,56 +22,75 @@ class PokemonList extends React.Component {
   };
 
   async componentDidMount() {
-    const res = await axios.get(
-      `https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20`
-    );
-    console.log(res);
-    this.setState({
-      pokemons: res.data.results,
-      next: res.data.next,
-      count: res.data.count
-    });
+    try {
+      const res = await axios.get(
+        `https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20`
+      );
+      console.log(res);
+      this.setState({
+        pokemons: res.data.results,
+        next: res.data.next,
+        count: res.data.count
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   fetchNextPokemon = async () => {
-    const res = await axios.get(this.state.next);
-    this.setState({
-      pokemons: this.state.pokemons.concat(res.data.results),
-      next: res.data.next,
-      count: res.data.count
-    });
+    try {
+      const res = await axios.get(this.state.next);
+      this.setState({
+        pokemons: this.state.pokemons.concat(res.data.results),
+        next: res.data.next,
+        count: res.data.count
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   handleChange = (e, { value }) => this.setState({ type: value });
 
   onTypeSubmit = async () => {
-    const res = await axios.get(
-      `https://pokeapi.co/api/v2/type/${this.state.type}`
-    );
-    const pokemons = res.data.pokemon;
+    try {
+      const res = await axios.get(
+        `https://pokeapi.co/api/v2/type/${this.state.type}`
+      );
 
-    let newPokemons = [];
+      const pokemons = res.data.pokemon;
 
-    for (let pokemon of pokemons) {
-      newPokemons.push(pokemon.pokemon);
+      let newPokemons = [];
+
+      // the format for filtered pokemon array is different so
+      // we have to format it accordingly.
+      for (let pokemon of pokemons) {
+        newPokemons.push(pokemon.pokemon);
+      }
+
+      this.setState({
+        pokemons: newPokemons,
+        next: res.data.next,
+        count: res.data.count
+      });
+    } catch (error) {
+      console.log(error);
     }
-
-    this.setState({
-      pokemons: newPokemons,
-      next: res.data.next,
-      count: res.data.count
-    });
   };
 
   onClearFilter = async () => {
-    const res = await axios.get(
-      `https://pokeapi.co/api/v2/pokemon/?offset=0&limit=50`
-    );
-    this.setState({
-      pokemons: res.data.results,
-      next: res.data.next,
-      count: res.data.count
-    });
+    try {
+      const res = await axios.get(
+        `https://pokeapi.co/api/v2/pokemon/?offset=0&limit=50`
+      );
+      this.setState({
+        pokemons: res.data.results,
+        next: res.data.next,
+        count: res.data.count
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   render() {
