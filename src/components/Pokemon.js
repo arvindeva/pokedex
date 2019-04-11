@@ -1,14 +1,20 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
+import { capitalize } from '../util';
+
+const StyledPokemon = styled.div`
+  a {
+    color: black;
+  }
+  text-align: left;
+`;
 
 class Pokemon extends React.Component {
   state = {
     sprites: ''
-  };
-
-  capitalize = s => {
-    if (typeof s !== 'string') return '';
-    return s.charAt(0).toUpperCase() + s.slice(1);
   };
 
   async componentDidMount() {
@@ -22,12 +28,16 @@ class Pokemon extends React.Component {
 
   render() {
     return (
-      <div className="item">
+      <StyledPokemon className="item">
         <div className="ui tiny image">
           <img src={this.state.sprites} alt={this.props.pokemon.name} />
         </div>
-        <h1>{this.capitalize(this.props.pokemon.name)}</h1>
-      </div>
+        <div className="middle aligned content">
+          <Link className="header" to={`/pokemon/${this.props.pokemon.name}`}>
+            {capitalize(this.props.pokemon.name)}
+          </Link>
+        </div>
+      </StyledPokemon>
     );
   }
 }
