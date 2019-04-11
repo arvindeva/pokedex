@@ -30,7 +30,9 @@ class Pokemon extends React.Component {
     return (
       <StyledPokemon className="item">
         <div className="ui tiny image">
-          <img src={this.state.sprites} alt={this.props.pokemon.name} />
+          <Link className="header" to={`/pokemon/${this.props.pokemon.name}`}>
+            <img src={this.state.sprites} alt={this.props.pokemon.name} />
+          </Link>
         </div>
         <div className="middle aligned content">
           <Link className="header" to={`/pokemon/${this.props.pokemon.name}`}>

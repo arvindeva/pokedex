@@ -23,7 +23,7 @@ class PokemonList extends React.Component {
 
   async componentDidMount() {
     const res = await axios.get(
-      `https://pokeapi.co/api/v2/pokemon/?offset=0&limit=50`
+      `https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20`
     );
     console.log(res);
     this.setState({
@@ -99,7 +99,6 @@ class PokemonList extends React.Component {
           </div>
         </div>
         <Divider />
-
         <InfiniteScroll
           dataLength={this.state.pokemons.length}
           next={this.fetchNextPokemon}

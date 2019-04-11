@@ -91,7 +91,14 @@ export const types = [
   }
 ];
 
-export const capitalize = s => {
-  if (typeof s !== 'string') return '';
-  return s.charAt(0).toUpperCase() + s.slice(1);
+export const capitalize = string => {
+  if (typeof string !== 'string') return '';
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
+export const formatString = string => {
+  if (typeof string !== 'string') return '';
+  let result = string.replace(/-/g, ' ');
+  result = result.replace(/\b\w/g, l => l.toUpperCase());
+  return result;
 };
