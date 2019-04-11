@@ -26,7 +26,6 @@ class PokemonList extends React.Component {
       const res = await axios.get(
         `https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20`
       );
-      console.log(res);
       this.setState({
         pokemons: res.data.results,
         next: res.data.next,

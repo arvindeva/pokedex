@@ -41,9 +41,6 @@ const Header = () => {
           </Link>
         </div>
         <div className="nav-items">
-          {/* <div className="item">
-            <Link to="/about">About</Link>
-          </div> */}
           <div className="item">
             <a href="https://github.com/arvindeva/pokedex" target="blank">
               <i className="github icon large" />
