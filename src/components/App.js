@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
-import { Heading } from 'rebass';
+import styled from 'styled-components';
 
 import PokemonList from './PokemonList';
+
+const StyledApp = styled.div.attrs({
+  className: 'ui container'
+})`
+  text-align: center;
+  margin: 0 auto;
+`;
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Heading>List of Pokemon</Heading>
+      <StyledApp>
+        <h1>Pokedex</h1>
         <PokemonList />
-      </div>
+      </StyledApp>
     );
   }
 }
