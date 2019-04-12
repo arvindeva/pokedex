@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { Dropdown, Divider } from 'semantic-ui-react';
 
-import { types } from '../util';
+import { types, url } from '../util';
 import Pokemon from './Pokemon';
 
 const StyledPokemonList = styled.div`
@@ -23,9 +23,7 @@ class PokemonList extends React.Component {
 
   async componentDidMount() {
     try {
-      const res = await axios.get(
-        `https://pokeapi.co/api/v2/pokemon/?offset=0&limit=20`
-      );
+      const res = await axios.get(`${url}/pokemon/?offset=0&limit=20`);
       this.setState({
         pokemons: res.data.results,
         next: res.data.next,
@@ -53,9 +51,7 @@ class PokemonList extends React.Component {
 
   onTypeSubmit = async () => {
     try {
-      const res = await axios.get(
-        `https://pokeapi.co/api/v2/type/${this.state.type}`
-      );
+      const res = await axios.get(`${url}/type/${this.state.type}`);
 
       const pokemons = res.data.pokemon;
 
@@ -79,9 +75,7 @@ class PokemonList extends React.Component {
 
   onClearFilter = async () => {
     try {
-      const res = await axios.get(
-        `https://pokeapi.co/api/v2/pokemon/?offset=0&limit=50`
-      );
+      const res = await axios.get(`${url}/pokemon/?offset=0&limit=20`);
       this.setState({
         pokemons: res.data.results,
         next: res.data.next,

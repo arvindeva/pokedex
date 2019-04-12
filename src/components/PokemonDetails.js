@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 
-import { capitalize, formatString } from '../util';
+import { capitalize, formatString, url } from '../util';
 
 import MoveList from './MoveList';
 
@@ -21,7 +21,7 @@ class PokemonDetails extends React.Component {
     try {
       this.setState({ loading: true });
       const name = this.props.match.params.name;
-      const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
+      const res = await axios.get(`${url}/pokemon/${name}`);
       const details = res.data;
       this.setState({
         loading: false,

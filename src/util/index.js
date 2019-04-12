@@ -102,3 +102,5 @@ export const formatString = string => {
   result = result.replace(/\b\w/g, l => l.toUpperCase());
   return result;
 };
+
+export const url = 'https://pokeapi.co/api/v2';
