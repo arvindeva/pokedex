@@ -49,7 +49,7 @@ class PokemonList extends React.Component {
     }
   };
 
-  handleChange = (e, { value }) => this.setState({ type: value });
+  handleTypeChange = (e, { value }) => this.setState({ type: value });
 
   onTypeSubmit = async () => {
     try {
@@ -101,7 +101,7 @@ class PokemonList extends React.Component {
             fluid
             selection
             options={types}
-            onChange={this.handleChange}
+            onChange={this.handleTypeChange}
             value={this.state.value}
           />
           <div className="buttons">

@@ -24,7 +24,7 @@ $ npm start
 
 ## About this app
 
-This is a tiny project using React to interact with [Pokedex API](https://jsonplaceholder.typicode.com/).
+This is a tiny project using React to interact with [Pokedex API](https://pokeapi.co/).
 
 Scenarios:
 
